@@ -1,0 +1,16 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: thing-service-db-auth
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gcpsm
+  target:
+    name: thing-service-db-auth
+    creationPolicy: Owner
+  dataFrom:
+    - extract:
+        key: thing-service-db-auth
